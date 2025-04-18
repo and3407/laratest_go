@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  go:
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
+    container_name: laratest_go
+    ports:
+      - "8083:8080"
+    # restart: unless-stopped
+    networks:
+      - laratest_network
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c "go build -o laratest_go . && ./laratest_go"
+    # command: sh -c "go run laratest_go.go"
+
+networks:
+    laratest_network:
+        external: true
