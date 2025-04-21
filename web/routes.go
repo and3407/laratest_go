@@ -5,8 +5,8 @@ import (
 )
 
 func initRoutes(ginEngine *gin.Engine) {
-	ginEngine.GET("/", start)
+	ginEngine.GET("/go", start)
 
-	reportRoutes := ginEngine.Group("/api")
+	reportRoutes := ginEngine.Group("/go/api")
 	reportRoutes.GET("/", ok)
 }
